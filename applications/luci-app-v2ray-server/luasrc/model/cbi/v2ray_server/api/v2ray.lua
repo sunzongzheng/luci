@@ -126,7 +126,7 @@ local function get_file_info(arch)
     elseif arch == "aarch64" then
         file_tree = "arm64"
     elseif arch == "ramips" then
-        file_tree = "mipsle"
+        file_tree = "mips32le"
     elseif arch == "ar71xx" then
         file_tree = "mips"
     elseif arch:match("^i[%d]86$") then
@@ -202,7 +202,7 @@ function to_check(arch)
         html_url = json.html_url
         for _, v in ipairs(json.assets) do
             if v.name and v.name:match("linux%-" .. file_tree) then
-                download_url = v.browser_download_url
+                download_url = "https://github.release.zzsun.cc/" .. v.browser_download_url
                 break
             end
         end
